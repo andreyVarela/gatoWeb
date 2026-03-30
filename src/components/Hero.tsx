@@ -99,7 +99,7 @@ export default function Hero() {
               className="flex items-center gap-6 mt-12 pt-8 border-t border-white/15"
             >
               <div>
-                <p className="text-2xl font-bold text-white">+500</p>
+                <p className="text-2xl font-bold text-white">+50</p>
                 <p className="text-xs text-white/50 mt-0.5">Hogares activos</p>
               </div>
               <div className="w-px h-10 bg-white/15" />
@@ -109,7 +109,7 @@ export default function Hero() {
               </div>
               <div className="w-px h-10 bg-white/15" />
               <div>
-                <p className="text-2xl font-bold text-white">6</p>
+                <p className="text-2xl font-bold text-white">27</p>
                 <p className="text-xs text-white/50 mt-0.5">Categorías</p>
               </div>
             </motion.div>

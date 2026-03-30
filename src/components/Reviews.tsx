@@ -1,66 +1,29 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Star, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react'
+import { Star, MessageSquare } from 'lucide-react'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 
 const reviews = [
   {
-    name: 'Rebeca R.',
-    initials: 'RR',
+    name: 'Eugenia M.',
+    initials: 'EM',
     service: 'Limpieza',
-    date: 'Hace 2 días',
-    rating: 5,
-    text: 'Excelente servicio de limpieza. La persona llegó puntual, fue muy profesional y dejó todo impecable. Ya agendé mi siguiente cita.',
-  },
-  {
-    name: 'Fernando G.',
-    initials: 'FG',
-    service: 'Mantenimiento',
-    date: 'Hace 5 días',
-    rating: 5,
-    text: 'Me repararon una fuga en menos de una hora. El técnico explicó todo y dejó el área limpia. Muy recomendado.',
-  },
-  {
-    name: 'Patricia V.',
-    initials: 'PV',
-    service: 'Mascotas',
     date: 'Hace 1 semana',
     rating: 5,
-    text: 'El paseador que nos asignaron es increíble. Mi perro lo adora y siempre llega feliz. Gran tranquilidad saber que está verificado.',
+    text: 'Me gustó mucho el servicio, Daniela fue excelente. La reserva fue súper fácil y el recordatorio muy útil. Definitivamente vuelvo a reservar.',
   },
   {
-    name: 'Luis A.',
-    initials: 'LA',
-    service: 'Jardinería',
-    date: 'Hace 1 semana',
-    rating: 4,
-    text: 'Buen trabajo con el jardín. Podaron todo con cuidado y dejaron las áreas comunes perfectas. Volveré a contratar.',
-  },
-  {
-    name: 'Sofía M.',
-    initials: 'SM',
-    service: 'Cuidado Personal',
+    name: 'Andrea S.',
+    initials: 'AS',
+    service: 'Administración',
     date: 'Hace 2 semanas',
     rating: 5,
-    text: 'Me hice las uñas y un masaje sin salir de casa. La experiencia fue increíble y los productos eran de primera calidad.',
-  },
-  {
-    name: 'Diego H.',
-    initials: 'DH',
-    service: 'Deportes',
-    date: 'Hace 2 semanas',
-    rating: 5,
-    text: 'Mi entrenador personal viene tres veces por semana al condominio. He mejorado muchísimo y la comodidad no tiene precio.',
+    text: 'GATO nos ha facilitado la coordinación de servicios en el condominio. Los residentes están contentos y todo queda organizado.',
   },
 ]
 
 export default function Reviews() {
-  const [page, setPage] = useState(0)
-  const perPage = 3
-  const totalPages = Math.ceil(reviews.length / perPage)
-  const visible = reviews.slice(page * perPage, page * perPage + perPage)
 
   return (
     <section className="relative py-24 lg:py-32 bg-gradient-to-b from-[#F7F7F7] to-white overflow-hidden">
@@ -87,33 +50,10 @@ export default function Reviews() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="icon-sm"
-              className="rounded-full"
-              onClick={() => setPage((p) => Math.max(0, p - 1))}
-              disabled={page === 0}
-            >
-              <ChevronLeft />
-            </Button>
-            <span className="text-sm text-muted-foreground tabular-nums px-2">
-              {page + 1} / {totalPages}
-            </span>
-            <Button
-              variant="outline"
-              size="icon-sm"
-              className="rounded-full"
-              onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
-              disabled={page === totalPages - 1}
-            >
-              <ChevronRight />
-            </Button>
-          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-4">
-          {visible.map((r) => (
+        <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+          {reviews.map((r) => (
             <motion.div
               key={r.name + r.service}
               initial={{ opacity: 0, y: 12 }}

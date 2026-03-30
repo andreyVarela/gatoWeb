@@ -4,31 +4,17 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 
 const testimonials = [
   {
-    quote: 'Desde que GATO llegó a nuestro residencial, coordinar servicios es increíblemente sencillo. Todo verificado, todo puntual.',
-    author: 'María F.',
-    role: 'Residente, Torres del Parque',
-    initials: 'MF',
+    quote: 'El servicio me gustó mucho, Daniela fue excelente. El proceso de reserva fue muy fácil y el recordatorio también muy bueno. Súper recomendado.',
+    author: 'Eugenia M.',
+    role: 'Residente',
+    initials: 'EM',
     rating: 5,
   },
   {
-    quote: 'La calidad de los proveedores es notablemente superior. Se nota que hay un proceso de selección serio detrás de cada profesional.',
-    author: 'Carlos M.',
-    role: 'Residente, Hacienda La Ceiba',
-    initials: 'CM',
-    rating: 5,
-  },
-  {
-    quote: 'Como administradora, GATO nos ha ahorrado horas de coordinación. Los residentes están encantados con el servicio.',
+    quote: 'Como administradora, GATO nos ha facilitado coordinar servicios para los residentes. Todo queda organizado y verificado desde la app.',
     author: 'Andrea S.',
-    role: 'Administradora, Vista Hermosa',
+    role: 'Administradora',
     initials: 'AS',
-    rating: 5,
-  },
-  {
-    quote: 'Contratar un entrenador personal nunca había sido tan fácil. Ahora entreno en mi condominio sin complicaciones.',
-    author: 'Roberto L.',
-    role: 'Residente, Condominio El Roble',
-    initials: 'RL',
     rating: 5,
   },
 ]
