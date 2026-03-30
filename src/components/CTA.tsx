@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 
 export default function CTA() {
   return (
-    <section id="descarga" className="py-24 lg:py-32 bg-[#F7F7F7]">
+    <section id="descarga" className="py-24 lg:py-32 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
