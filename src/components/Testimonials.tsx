@@ -1,27 +1,33 @@
 import { motion } from 'framer-motion'
-import { Star, Quote } from 'lucide-react'
+import { Star, Quote, MessageSquare } from 'lucide-react'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 
-const testimonials = [
+const reviews = [
   {
-    quote: 'El servicio me gustó mucho, Daniela fue excelente. El proceso de reserva fue muy fácil y el recordatorio también muy bueno. Súper recomendado.',
-    author: 'Eugenia M.',
-    role: 'Residente',
+    name: 'Eugenia M.',
     initials: 'EM',
+    role: 'Residente',
+    service: 'Limpieza',
+    date: 'Hace 1 semana',
     rating: 5,
+    text: 'Me gustó mucho el servicio, Daniela fue excelente. La reserva fue súper fácil y el recordatorio muy útil. Definitivamente vuelvo a reservar.',
   },
   {
-    quote: 'Como administradora, GATO nos ha facilitado coordinar servicios para los residentes. Todo queda organizado y verificado desde la app.',
-    author: 'Andrea S.',
-    role: 'Administradora',
+    name: 'Andrea S.',
     initials: 'AS',
+    role: 'Administradora',
+    service: 'Administración',
+    date: 'Hace 2 semanas',
     rating: 5,
+    text: 'GATO nos ha facilitado la coordinación de servicios en el condominio. Los residentes están contentos y todo queda organizado.',
   },
 ]
 
 const container = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+  visible: { transition: { staggerChildren: 0.12 } },
 }
 
 const item = {
@@ -31,8 +37,10 @@ const item = {
 
 export default function Testimonials() {
   return (
-    <section id="testimonios" className="py-24 lg:py-32 bg-coral-50">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="testimonios" className="relative py-24 lg:py-32 bg-coral-50 overflow-hidden">
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-coral/[0.04] rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,10 +52,10 @@ export default function Testimonials() {
             Testimonios
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-app-text tracking-tight mb-4">
-            Lo que dicen nuestras comunidades
+            Lo que dicen nuestros usuarios
           </h2>
           <p className="text-muted-foreground text-base max-w-lg mx-auto">
-            Residentes y administradores confían en GATO para gestionar sus servicios del hogar.
+            Opiniones reales de residentes y administradores que ya usan GATO.
           </p>
         </motion.div>
 
@@ -56,38 +64,65 @@ export default function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="grid md:grid-cols-2 gap-4"
+          className="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto"
         >
-          {testimonials.map((t) => (
-            <motion.div key={t.author} variants={item}>
+          {reviews.map((r) => (
+            <motion.div key={r.name} variants={item}>
               <div className="bg-white border border-border/50 rounded-2xl p-6 h-full hover:shadow-card transition-shadow duration-300">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex gap-0.5">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                    ))}
+                  <Badge variant="secondary" className="text-[11px] font-medium px-2.5 py-0.5 bg-coral/10 text-coral border-coral/10">
+                    {r.service}
+                  </Badge>
+                  <div className="flex items-center gap-1">
+                    <div className="flex gap-0.5">
+                      {[...Array(r.rating)].map((_, i) => (
+                        <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                    <Quote className="w-4 h-4 text-coral/15 ml-2" />
                   </div>
-                  <Quote className="w-5 h-5 text-coral/20" />
                 </div>
 
-                <p className="text-app-text text-sm leading-relaxed mb-6">
-                  &ldquo;{t.quote}&rdquo;
+                <p className="text-app-text text-sm leading-relaxed mb-5">
+                  &ldquo;{r.text}&rdquo;
                 </p>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-border/50">
-                  <Avatar className="w-9 h-9">
-                    <AvatarFallback className="bg-coral text-white text-xs font-semibold">
-                      {t.initials}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="text-sm font-medium text-app-text">{t.author}</p>
-                    <p className="text-xs text-muted-foreground">{t.role}</p>
+                <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                  <div className="flex items-center gap-3">
+                    <Avatar className="w-8 h-8">
+                      <AvatarFallback className="bg-coral text-white text-[10px] font-semibold">
+                        {r.initials}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="text-sm font-medium text-app-text">{r.name}</p>
+                      <p className="text-[11px] text-muted-foreground">{r.role}</p>
+                    </div>
                   </div>
+                  <span className="text-[11px] text-muted-foreground">{r.date}</span>
                 </div>
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-10 text-center"
+        >
+          <Button
+            variant="outline"
+            asChild
+            className="rounded-full border-border hover:border-coral hover:text-coral"
+          >
+            <a href="mailto:hola@gatohomeservices.com?subject=Mi%20reseña%20GATO">
+              <MessageSquare />
+              Compartir mi experiencia
+            </a>
+          </Button>
         </motion.div>
       </div>
     </section>
