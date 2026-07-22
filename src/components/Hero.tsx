@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle } from 'lucide-react'
+import { ArrowRight, CheckCircle, Star, TrendingUp } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
+const APP_URL = 'https://gato-app.com'
+
 const highlights = [
-  'Proveedores verificados',
-  'Pagos seguros',
   'Sin membresía',
+  'Pagos garantizados',
+  'Clientes verificados',
 ]
 
 const fadeUp = {
@@ -45,27 +47,34 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400" />
               </span>
               <span className="text-white text-xs font-semibold tracking-wide uppercase">
-                Disponible en Costa Rica
+                Para profesionales · Costa Rica
               </span>
             </motion.div>
 
             <motion.h1 initial="hidden" animate="visible" custom={1} variants={fadeUp}
               className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.08] tracking-tight mb-6"
             >
-              Servicios a domicilio para tu comunidad
+              Convertí tu talento en{' '}
+              <span className="relative whitespace-nowrap">
+                ingresos constantes
+                <svg className="absolute -bottom-1.5 left-0 w-full" height="10" viewBox="0 0 200 10" fill="none" preserveAspectRatio="none">
+                  <path d="M2 7C40 3 160 3 198 7" stroke="rgba(255,255,255,0.55)" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+              </span>
             </motion.h1>
 
             <motion.p initial="hidden" animate="visible" custom={2} variants={fadeUp}
-              className="text-lg text-white/75 leading-relaxed mb-8 max-w-md"
+              className="text-lg text-white/80 leading-relaxed mb-8 max-w-md"
             >
-              La app que conecta a residentes de condominios con profesionales verificados. Seguridad, orden y calidad garantizada.
+              GATO te conecta con condominios enteros que ya buscan lo que ofrecés.
+              Recibí reservas, gestioná tu agenda y cobrá seguro — desde una sola app.
             </motion.p>
 
             <motion.div initial="hidden" animate="visible" custom={3} variants={fadeUp}
               className="flex flex-wrap gap-x-5 gap-y-2.5 mb-10"
             >
               {highlights.map((h) => (
-                <div key={h} className="flex items-center gap-2 text-sm text-white/80">
+                <div key={h} className="flex items-center gap-2 text-sm text-white/85">
                   <CheckCircle className="w-4 h-4 text-amber-300" />
                   <span>{h}</span>
                 </div>
@@ -80,8 +89,8 @@ export default function Hero() {
                 size="lg"
                 className="bg-white text-coral-700 hover:bg-white/90 rounded-full font-semibold shadow-[0_8px_30px_-4px_rgba(0,0,0,0.2)]"
               >
-                <a href="https://gato-app.com" target="_blank" rel="noopener noreferrer">
-                  Solicitar acceso
+                <a href={APP_URL} target="_blank" rel="noopener noreferrer">
+                  Empezar como profesional
                   <ArrowRight />
                 </a>
               </Button>
@@ -104,13 +113,13 @@ export default function Hero() {
               </div>
               <div className="w-px h-10 bg-white/15" />
               <div>
-                <p className="text-2xl font-bold text-white">4.9 <span className="text-lg text-amber-300">★</span></p>
-                <p className="text-xs text-white/50 mt-0.5">Calificación</p>
+                <p className="text-2xl font-bold text-white">₡0</p>
+                <p className="text-xs text-white/50 mt-0.5">De membresía</p>
               </div>
               <div className="w-px h-10 bg-white/15" />
               <div>
-                <p className="text-2xl font-bold text-white">27</p>
-                <p className="text-xs text-white/50 mt-0.5">Categorías</p>
+                <p className="text-2xl font-bold text-white flex items-center gap-1">4.9 <Star className="w-4 h-4 fill-amber-300 text-amber-300" /></p>
+                <p className="text-xs text-white/50 mt-0.5">Calificación</p>
               </div>
             </motion.div>
           </div>
@@ -136,26 +145,40 @@ function PhoneMockup() {
       {/* Shadow under phone */}
       <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[220px] h-[40px] bg-black/20 blur-[30px] rounded-full" />
 
-      {/* Floating icons */}
-      <motion.img src="/icons/mascotas.png" alt=""
-        className="absolute -left-16 top-8 w-16 h-16 object-contain drop-shadow-2xl"
+      {/* Floating earnings pill */}
+      <motion.div
+        className="absolute -left-20 top-16 bg-white rounded-2xl shadow-2xl px-4 py-3 flex items-center gap-3"
         animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.img src="/icons/deportes.png" alt=""
-        className="absolute -right-14 top-24 w-14 h-14 object-contain drop-shadow-2xl"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-      />
-      <motion.img src="/icons/cuidado-personal.png" alt=""
-        className="absolute -left-12 bottom-36 w-13 h-13 object-contain drop-shadow-2xl"
+        transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <div className="w-9 h-9 rounded-xl bg-green-100 flex items-center justify-center">
+          <TrendingUp className="w-5 h-5 text-green-600" />
+        </div>
+        <div>
+          <p className="text-[10px] text-[#8A8A8E] leading-none mb-1">Este mes</p>
+          <p className="text-sm font-bold text-[#1C1A19] leading-none">+₡342.000</p>
+        </div>
+      </motion.div>
+
+      {/* Floating rating pill */}
+      <motion.div
+        className="absolute -right-14 bottom-40 bg-white rounded-2xl shadow-2xl px-4 py-3"
+        animate={{ y: [0, 9, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
+      >
+        <div className="flex items-center gap-1 mb-0.5">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
+          ))}
+        </div>
+        <p className="text-[10px] text-[#8A8A8E]">Nueva reseña 5★</p>
+      </motion.div>
+
+      {/* Floating category icons */}
+      <motion.img src="/icons/mascotas.png" alt=""
+        className="absolute -left-10 bottom-28 w-14 h-14 object-contain drop-shadow-2xl"
         animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-      />
-      <motion.img src="/icons/clases.png" alt=""
-        className="absolute -right-10 bottom-52 w-12 h-12 object-contain drop-shadow-2xl"
-        animate={{ y: [0, -7, 0] }}
-        transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
+        transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
       />
 
       {/* Phone frame */}
@@ -171,29 +194,35 @@ function PhoneMockup() {
           <div className="flex items-center justify-between mb-5">
             <div>
               <p className="text-[10px] text-[#8A8A8E]">Buenos días,</p>
-              <p className="text-sm font-semibold text-[#1C1A19]">Residencial Las Palmas</p>
+              <p className="text-sm font-semibold text-[#1C1A19]">Carlos G. · Profesional</p>
             </div>
-            <img src="/images/gato-icon.png" alt="GATO" className="w-8 h-8 object-contain" />
+            <div className="w-9 h-9 rounded-full bg-coral/10 flex items-center justify-center text-coral font-bold text-xs">CG</div>
           </div>
 
+          {/* Earnings card */}
           <div className="bg-gradient-to-br from-coral to-coral-700 rounded-2xl p-4 mb-5">
-            <p className="text-[10px] text-white/70 mb-0.5">Próximo servicio</p>
-            <p className="font-semibold text-sm text-white">Limpieza del hogar</p>
-            <p className="text-[10px] text-white/60 mt-1">Hoy · 10:00 AM · Gabriela R.</p>
+            <p className="text-[10px] text-white/70 mb-0.5">Ganancias del mes</p>
+            <p className="font-bold text-2xl text-white leading-tight">₡342.000</p>
+            <div className="flex items-center gap-1.5 mt-2">
+              <span className="text-[10px] text-white bg-white/20 rounded-full px-2 py-0.5 font-medium">↑ 18% vs. mes anterior</span>
+            </div>
           </div>
 
-          <p className="text-[10px] text-[#8A8A8E] font-medium uppercase tracking-wider mb-3">Mis servicios</p>
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-[10px] text-[#8A8A8E] font-medium uppercase tracking-wider">Próximas reservas</p>
+            <span className="text-[10px] text-coral font-semibold">3 hoy</span>
+          </div>
           <div className="flex flex-col gap-2">
             {[
-              { icon: '/icons/hogar.png', name: 'Limpieza del hogar', time: 'Hoy, 10:00 AM' },
-              { icon: '/icons/mantenimiento.png', name: 'Mantenimiento', time: 'Mañana, 9:00 AM' },
-              { icon: '/icons/jardineria.png', name: 'Jardinería', time: 'Vie, 8:00 AM' },
+              { icon: '/icons/mascotas.png', name: 'Paseo de mascota', time: 'Hoy, 10:00 AM', client: 'Familia Rojas' },
+              { icon: '/icons/hogar.png', name: 'Limpieza del hogar', time: 'Hoy, 2:00 PM', client: 'Ana M.' },
+              { icon: '/icons/jardineria.png', name: 'Jardinería', time: 'Mañana, 9:00 AM', client: 'Torre B · 4B' },
             ].map((s) => (
               <div key={s.name} className="flex items-center gap-3 bg-[#F5F5F5] rounded-xl px-3 py-2.5">
                 <img src={s.icon} alt={s.name} className="w-8 h-8 object-contain" />
                 <div className="flex-1 min-w-0">
                   <p className="text-xs font-medium text-[#1C1A19] truncate">{s.name}</p>
-                  <p className="text-[10px] text-[#8A8A8E]">{s.time}</p>
+                  <p className="text-[10px] text-[#8A8A8E]">{s.time} · {s.client}</p>
                 </div>
                 <div className="w-1.5 h-1.5 rounded-full bg-coral" />
               </div>

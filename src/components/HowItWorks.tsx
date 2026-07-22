@@ -1,30 +1,30 @@
 import { motion } from 'framer-motion'
-import { UserPlus, Search, ShieldCheck, ThumbsUp } from 'lucide-react'
+import { UserPlus, ShieldCheck, CalendarClock, Wallet } from 'lucide-react'
 
 const steps = [
   {
     icon: UserPlus,
     number: '01',
-    title: 'Tu comunidad se une',
-    description: 'El administrador del condominio solicita acceso y activa GATO para todos los residentes.',
-  },
-  {
-    icon: Search,
-    number: '02',
-    title: 'Elegí tu servicio',
-    description: 'Explorá el catálogo, seleccioná fecha, hora y reservá en segundos desde la app.',
+    title: 'Creá tu perfil',
+    description: 'Descargá la app, elegí tus categorías y mostrá lo que hacés. Toma menos de 5 minutos.',
   },
   {
     icon: ShieldCheck,
-    number: '03',
-    title: 'Profesionales verificados',
-    description: 'Cada proveedor pasa un proceso de verificación. Sabés quién llega antes de que llegue.',
+    number: '02',
+    title: 'Verificate',
+    description: 'Validamos tu identidad para darte el sello de confianza que los residentes buscan.',
   },
   {
-    icon: ThumbsUp,
+    icon: CalendarClock,
+    number: '03',
+    title: 'Recibí reservas',
+    description: 'Los vecinos de condominios activos te encuentran y reservan directo desde su casa.',
+  },
+  {
+    icon: Wallet,
     number: '04',
-    title: 'Calidad garantizada',
-    description: 'Calificá el servicio y ayudá a tu comunidad. Si no quedás satisfecho, lo resolvemos.',
+    title: 'Cobrá seguro',
+    description: 'Hacés el trabajo y el pago llega solo. Sin efectivo, sin cobros incómodos.',
   },
 ]
 
@@ -53,13 +53,13 @@ export default function HowItWorks() {
           className="text-center mb-16"
         >
           <p className="text-coral text-sm font-medium tracking-wide uppercase mb-3">
-            Proceso
+            Cómo funciona
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-app-text tracking-tight mb-4">
-            Simple por diseño
+            De cero a cobrando, en 4 pasos
           </h2>
           <p className="text-muted-foreground text-base max-w-md mx-auto">
-            Cuatro pasos para transformar la experiencia de servicios en tu comunidad.
+            Sin papeleos ni comisiones sorpresa. Empezar como profesional es así de simple.
           </p>
         </motion.div>
 

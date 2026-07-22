@@ -1,11 +1,15 @@
 import { Separator } from '@/components/ui/separator'
-import { Instagram, Facebook, Mail, MapPin } from 'lucide-react'
+import { Instagram, Facebook, Mail, MapPin, ArrowRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+
+const APP_URL = 'https://gato-app.com'
 
 const navLinks = [
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Proceso', href: '#como-funciona' },
+  { label: 'Beneficios', href: '#beneficios' },
+  { label: 'Cómo funciona', href: '#como-funciona' },
+  { label: 'Categorías', href: '#categorias' },
   { label: 'Testimonios', href: '#testimonios' },
-  { label: 'Solicitar acceso', href: 'https://gato-app.com' },
+  { label: 'Preguntas frecuentes', href: '#faq' },
 ]
 
 const socialLinks = [
@@ -29,9 +33,19 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs mb-6">
-              Conectamos comunidades residenciales con proveedores de servicios
-              verificados en la Gran Área Metropolitana de Costa Rica.
+              La herramienta que los profesionales de servicios necesitan para conseguir
+              clientes, organizar su agenda y cobrar seguro en las comunidades de Costa Rica.
             </p>
+            <Button
+              asChild
+              size="sm"
+              className="rounded-full bg-coral hover:bg-coral-600 text-white font-semibold mb-6"
+            >
+              <a href={APP_URL} target="_blank" rel="noopener noreferrer">
+                Empezar como profesional
+                <ArrowRight />
+              </a>
+            </Button>
             <div className="flex items-center gap-1.5 text-white/40 text-xs">
               <MapPin className="w-3.5 h-3.5" />
               <span>San José, Costa Rica</span>

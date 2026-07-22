@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Download } from 'lucide-react'
+import { Menu, X, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
+const APP_URL = 'https://gato-app.com'
+
 const links = [
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Proceso', href: '#como-funciona' },
+  { label: 'Beneficios', href: '#beneficios' },
+  { label: 'Cómo funciona', href: '#como-funciona' },
+  { label: 'Categorías', href: '#categorias' },
   { label: 'Testimonios', href: '#testimonios' },
-  { label: 'Contacto', href: '#contacto' },
+  { label: 'Preguntas', href: '#faq' },
 ]
 
 export default function Navbar() {
@@ -55,7 +58,7 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className={`px-4 py-2 text-sm transition-colors rounded-lg ${
+                className={`px-3.5 py-2 text-sm transition-colors rounded-lg ${
                   scrolled
                     ? 'text-muted-foreground hover:text-app-text hover:bg-muted'
                     : 'text-white/70 hover:text-white hover:bg-white/10'
@@ -66,19 +69,29 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center gap-2">
+            <a
+              href="#comunidades"
+              className={`px-3 py-2 text-sm transition-colors rounded-lg ${
+                scrolled
+                  ? 'text-muted-foreground hover:text-app-text'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              Soy residente
+            </a>
             <Button
               asChild
               size="sm"
-              className={`rounded-full ${
+              className={`rounded-full font-semibold ${
                 scrolled
                   ? 'bg-coral hover:bg-coral-600 text-white'
                   : 'bg-white text-coral-700 hover:bg-white/90'
               }`}
             >
-              <a href="https://gato-app.com" target="_blank" rel="noopener noreferrer">
-                <Download />
-                Solicitar acceso
+              <a href={APP_URL} target="_blank" rel="noopener noreferrer">
+                Ingresar como profesional
+                <ArrowRight />
               </a>
             </Button>
           </div>
@@ -86,9 +99,7 @@ export default function Navbar() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className={`md:hidden p-2.5 rounded-lg transition-colors ${
-              scrolled
-                ? 'hover:bg-muted'
-                : 'hover:bg-white/10'
+              scrolled ? 'hover:bg-muted' : 'hover:bg-white/10'
             }`}
             aria-label="Menú"
           >
@@ -114,17 +125,24 @@ export default function Navbar() {
                 {l.label}
               </a>
             ))}
-            <div className="mt-6 pt-6 border-t border-border">
+            <div className="mt-6 pt-6 border-t border-border flex flex-col gap-3">
               <Button
                 asChild
                 size="lg"
-                className="w-full bg-coral hover:bg-coral-600 text-white rounded-full"
+                className="w-full bg-coral hover:bg-coral-600 text-white rounded-full font-semibold"
               >
-                <a href="https://gato-app.com" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>
-                  <Download />
-                  Solicitar acceso
+                <a href={APP_URL} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>
+                  Ingresar como profesional
+                  <ArrowRight />
                 </a>
               </Button>
+              <a
+                href="#comunidades"
+                onClick={() => setMobileOpen(false)}
+                className="text-center text-sm text-muted-foreground py-2"
+              >
+                Soy residente
+              </a>
             </div>
           </div>
         </div>
